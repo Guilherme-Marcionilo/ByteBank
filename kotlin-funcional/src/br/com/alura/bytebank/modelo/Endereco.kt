@@ -1,6 +1,6 @@
 package br.com.alura.bytebank.modelo
 
-open class Endereco(
+class Endereco(
     var logradouro: String = "",
     var numero: Int = 0,
     var bairro: String = "",
@@ -8,7 +8,7 @@ open class Endereco(
     var estado: String = "",
     var cep: String = "",
     var complemento: String = ""
-){
+) {
     override fun toString(): String {
         return """
 Endereco(logradouro='$logradouro', 
@@ -47,6 +47,14 @@ complemento='$complemento')
         result = 31 * result + cep.hashCode()
         result = 31 * result + complemento.hashCode()
         return result
+    }
+
+    fun completo(): String {
+        return """
+$logradouro - $numero, $bairro, $cidade - $estado
+$cep
+$complemento    
+""".trimIndent()
     }
 
 
